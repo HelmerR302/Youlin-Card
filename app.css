@@ -14,3 +14,47 @@ body {
 #profileImg:hover {
   cursor: pointer;
 }
+
+
+.addIcon{
+  color:#C490E4;
+}
+
+.btn.goButton{
+  color:white;
+  background-color:#C490E4;
+}
+
+.buttonRemove:hover {
+  cursor: pointer;
+}
+
+hr{
+    width:70%;
+    border-top: 1px solid grey;
+  }
+
+i{
+ font-size:120%; 
+}
+
+.starGroup{
+  display:flex;
+  flex-direction: row-reverse;
+}
+
+.star{
+  padding:3px;
+}
+
+.starGroup :hover,
+.starGroup i:hover ~i{
+  color: #FF8D29;
+  cursor: pointer;
+  
+}
+
+
+.selected{
+  color: #FF8D29;
+}
