@@ -1,0 +1,16 @@
+html,
+body {
+  background: #fff8f0;
+  color: #484848;
+  height: 100%;
+}
+
+.btn {
+  color: white;
+  background-color: #c490e4;
+  border: 0px;
+}
+
+#profileImg:hover {
+  cursor: pointer;
+}
