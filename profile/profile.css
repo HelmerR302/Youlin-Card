@@ -1,0 +1,17 @@
+html,
+body {
+  background: #fff8f0;
+  color: #484848;
+  height: 100%;
+}
+
+#upper-part{
+    background-image: linear-gradient(to right, #12c2e9, #c471ed, #f64f59);
+    height: 35%;
+}
+
+#profileName{
+    color: white;
+    margin-bottom:20px;
+    text-align: center; 
+}
