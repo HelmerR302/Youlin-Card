@@ -33,39 +33,6 @@
       Hide me
   </div>
   <script>
-      function getRandomInt(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
-      }
-
-      function loadCaptcha() {
-        window.captchaText = getRandomInt(1000, 9999);
-        figlet(window.captchaText, function(err, data) {
-          $('#captcha').html(data)
-        });
-      }      
-
-      function checkCaptcha() {
-        if ($('#captchaCheck').val() == window.captchaText) {
-          $.cookie(`${window.location.host}-yanzheng`, 'verified', { expires: 30, path: '/' });
-          loadProfile()
-        } else {
-          alert('请输入正确的验证码');
-        }
-      }
-
-      function loadProfile() {
-          // TODO: decrypt the data and populate the UI here
-          $('#captcha-section').hide();
-          $('#profile').show();
-      }
-
-      if ($.cookie(`${window.location.host}-yanzheng`) == "verified") {
-        loadProfile();
-      } else {
-        loadCaptcha();
-      }
 
   </script>
 </body>

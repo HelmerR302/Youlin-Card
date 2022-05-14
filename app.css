@@ -58,3 +58,18 @@ i{
 .selected{
   color: #FF8D29;
 }
+
+
+#upper-part{
+  background-image: linear-gradient(to right,#c490e4,#c471ed, #f64f59);
+  height: 35%;
+}
+
+#QRimg{
+  width:12rem;
+  border:solid 1px;
+}
+
+h4{
+  color: white;
+}

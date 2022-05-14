@@ -1,4 +1,6 @@
-window.yaoshi = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Base64.parse(`${window.location.host}-otmr9c`));
+window.yaoshi = CryptoJS.enc.Base64.stringify(
+  CryptoJS.enc.Base64.parse(`${window.location.host}-otmr9c`)
+);
 
 function getURL() {
   //generate random sprites and seeds, seeds is a set of 4 random characters
@@ -34,218 +36,125 @@ $("#profileImg").click(getURL);
 
 // $(function () {
 window.platforms = [
-  "definiteness",
-  "upsilon",
-  "vexatious",
-  "mineralizes",
-  "zappy",
-  "commonweals",
-  "dalesman",
-  "tearing",
-  "inarticulates",
-  "dogvanes",
-  "dioxid",
-  "naturals",
-  "tided",
-  "autolysins",
-  "hourly",
-  "logotypies",
-  "househusbands",
-  "bitmapped",
-  "subheads",
-  "hibernators",
-  "surceasing",
-  "invisibles",
-  "lysogenic",
-  "unrobed",
-  "daidzeins",
-  "wanned",
-  "disseizees",
-  "gonadotropin",
-  "bracteate",
-  "lolloped",
-  "enterocolitis",
-  "herries",
-  "singsong",
-  "deserve",
-  "unpressured",
-  "ferlie",
-  "manos",
-  "muled",
-  "towaways",
-  "lordoses",
-  "outdesigned",
-  "betaking",
-  "mining",
-  "perithecia",
-  "spleenworts",
-  "dependants",
-  "sojas",
-  "modica",
-  "stoked",
-  "springtail",
-  "autoclaving",
-  "aliteracies",
-  "burriest",
-  "glossolalists",
-  "nickeling",
-  "trophallaxis",
-  "sissyish",
-  "jog",
-  "haricot",
-  "bicorns",
-  "trichotomies",
-  "notations",
-  "galloping",
-  "oven",
-  "denumerability",
-  "haplessnesses",
-  "overlong",
-  "reconvening",
-  "dogtrots",
-  "devolution",
-  "marathoners",
-  "boites",
-  "hatracks",
-  "downgraded",
-  "nonunionized",
-  "regarded",
-  "metalworkers",
-  "wos",
-  "perchers",
-  "copy",
-  "lysogen",
-  "novocaine",
-  "finishing",
-  "mottle",
-  "iceboats",
-  "fibrannes",
-  "cobia",
-  "duststorm",
-  "horseman",
-  "veinier",
-  "pacy",
-  "bushmaster",
-  "volplane",
-  "rickettsias",
-  "dryers",
-  "bassetted",
-  "witchings",
-  "duckwalked",
-  "megalomaniacs",
-  "amphidiploid",
-  "duikers",
-  "phantasying",
-  "cooks",
-  "wormed",
-  "daylightings",
-  "distrainers",
-  "pillowing",
-  "plasher",
-  "avidnesses",
-  "coesite",
-  "pewees",
-  "trivalent",
-  "resectable",
-  "vaultingly",
-  "houselessnesses",
-  "charactering",
-  "proffered",
-  "dealings",
-  "condo",
-  "twilled",
-  "syphoning",
-  "hypochondriasis",
-  "demitting",
-  "swains",
-  "cystoscopies",
-  "centerpieces",
-  "enserfments",
-  "bragging",
-  "biometrical",
-  "innocently",
-  "oxidasic",
-  "sinuosities",
-  "superannuate",
-  "ospreys",
-  "kidnaps",
-  "lipides",
-  "gridlock",
-  "evasions",
-  "illnesses",
-  "erratical",
-  "hopefulnesses",
-  "ectases",
-  "carburetted",
-  "pilotfish",
-  "talapoin",
-  "oxygenating",
-  "biggish",
-  "ctenophoran",
-  "puddliest",
-  "newspeaks",
-  "gutlike",
-  "acted",
-  "conductions",
-  "rootlet",
-  "looed",
-  "coalitions",
-  "bandmates",
-  "some",
-  "fastness",
-  "chics",
-  "sickness",
-  "cartelized",
-  "tenderized",
-  "badmouthing",
-  "crisscrossing",
-  "traumatism",
-  "effusion",
-  "boroughs",
-  "sympatholytic",
-  "kremlins",
-  "expandors",
-  "featliest",
-  "tarmac",
-  "crudes",
-  "sannyasin",
-  "fearlessly",
-  "edentates",
-  "redenying",
-  "jubilations",
-  "polariscopic",
-  "wallboards",
-  "dendrons",
-  "garcon",
-  "regather",
-  "myoclonuses",
-  "wishbones",
-  "accelerant",
-  "hawsepipe",
-  "hawala",
-  "masterminding",
-  "fyke",
-  "speechwriters",
-  "coadmit",
-  "alkine",
-  "pyrheliometer",
-  "antidiabetic",
-  "brotherlinesses",
-  "maculation",
-  "overdose",
-  "exophthalmoses",
+  "Facebook",
+  "WhatsApp",
+  "QQ",
+  "WeChat",
+  "QZone",
+  "Tumblr",
+  "Instagram",
+  "Twitter",
+  "Google",
+  "Baidu Tieba",
+  "Skype",
+  "Viber",
+  "Sina Weibo",
+  "LINE",
+  "Snapchat",
+  "YY",
+  "VKontakte ",
+  "Pinterest",
+  "LinkedIn",
+  "Telegram",
+  "Reddit",
+  "Taringa",
+  "Foursquare",
+  "Renren",
+  "Tagged",
+  "Badoo",
+  "Myspace",
+  "Mix",
+  "The Dots",
+  "Kiwibox",
+  "Skyrock",
+  "Delicious",
+  "Snapfish",
+  "ReverbNation",
+  "Flixster",
+  "Care2",
+  "CafeMom",
+  "Ravelry",
+  "Nextdoor",
+  "Wayn",
+  "Cellufun",
+  "YouTube",
+  "Upstream",
+  "Classmates",
+  "MyHeritage",
+  "Viadeo",
+  "Xing",
+  "Xanga",
+  "LiveJournal",
+  "Friendster",
+  "Funny or Die",
+  "Gaia Online",
+  "We Heart It",
+  "Buzznet",
+  "DeviantArt",
+  "Flickr",
+  "MeetMe",
+  "Meetup",
+  "Tout",
+  "Mixi",
+  "Douban",
+  "Vero",
+  "Quora",
+  "Spreely",
+  "Discord",
+  "TikTok",
+  "WT Social",
+  "Triller",
+  "Elpha",
+  "Yubo",
+  "PopBase",
+  "Peanut ",
+  "Valence",
+  "Flip",
+  "HouseParty",
+  "Caffeine",
+  "Steemit",
+  "Goodreads",
+  "Twitch",
+  "CaringBridge",
+  "WattPad",
+  "Crunchyroll",
+  "Soundcloud",
+  "Mocospace",
+  "CouchSurfing",
+  "italki",
+  "Medium",
+  "Ello",
+  "Vimeo",
+  "Giphy",
+  "Tribe",
+  "Kuaishou",
+  "Imgur",
+  "Influenster",
+  "FilmAffinity",
+  "Open Diary",
+  "Bubbly",
+  "Clubhouse",
+  "MeWe",
+  "Gab",
+  "Rumble",
 ];
 
+const cnDict = {
+  "Kuaishou": "快手",
+}
+
 const platformOptions = platforms.map(
-  (platform) => `<option value=${platform} >`
+  (platform) => `<option value=${platform.replace(" ", "-")}>${cnDict[platform] || platform}</option>`
 );
 
 $("#datalistOptions").append(platformOptions);
 
-const addRow = () => {
+const addRow = (platformArg) => {
   let row = $("#copyMe").clone(true)[0];
   row.style.display = "flex";
   row.id = Math.random().toString().substr(2, 8);
+  const platform = platformArg && platformArg.replace("-", " ")
+  // $(row).find(".platform-name").html(cnDict[platform] || platform)
   $("#accountRowList").append(row);
 };
 
@@ -254,7 +163,7 @@ const onSearchInput = () => {
   let searchValue = $("#SMDataList")[0].value;
   $("#datalistOptions")[0].childNodes.forEach((option) => {
     if (option.value === searchValue) {
-      addRow();
+      addRow(option.value);
       // TODO: it should break, but forEach does not support break statement.
     }
   });
@@ -278,12 +187,11 @@ function deleteRow(btn) {
 
 //star group
 $(".star").click(function (e) {
-  $(this).removeClass("selected");
+  $(this).parent().find(".star").removeClass("selected");
   $(this).addClass("selected");
   $(this).nextAll().addClass("selected");
-  
+
   const index = 2 - $(this).index();
-  console.log(index);
   $(e.target).parent().attr("data-frequency", index);
 });
 
@@ -293,8 +201,14 @@ $("#next-button").click(function () {
   $("#accounts-page").show().css({ display: "flex" });
 });
 
-$("#addIcon").click(addRow);
+$("#addIcon").click(() => addRow());
 
+// Display the last page
+const showLastPage = () => {
+  $("#avatar-page").hide();
+  $("#accounts-page").hide();
+  $("#page-3").show();
+};
 
 const generateData = () => {
   /*
@@ -308,28 +222,35 @@ const generateData = () => {
         ]
     ]
   */
-  
-    let data = [];
-    data[0] = ""; // username
-   // get beardice_path
-   data[1] = window.avatarPath;
-   data[2] = [];
-   const rows = $(".account-row:not(#copyMe)");
-   rows.each((index, row) => {
-      const username = $(row).find(".username").attr('data-username');
-      const frequency = $(row).find(".frequency").attr('data-frequency');
-      if(!username && !frequency) {
-        alert("请完整输入");
-        return;
-      }
-      data[2][index] = [];
-      data[2][index][0] = "";
-      data[2][index][1] = username;
-      data[2][index][2] = frequency
-   })
-    ;
-   const ciphertext = CryptoJS.AES.encrypt(JSON.stringify(data), window.yaoshi || 'secret key 123').toString();
-   console.log(ciphertext);
-}
+  let isValid = true;
+  let data = [];
+  data[0] = ""; // username
+  // get beardice_path
+  data[1] = window.avatarPath;
+  data[2] = [];
+  const rows = $(".account-row:not(#copyMe)");
+  rows.each((index, row) => {
+    const username = $(row).find(".username").attr("data-username");
+    const frequency = $(row).find(".frequency").attr("data-frequency");
+    if (!username && !frequency) {
+      isValid = false;
+      alert("请完整输入");
+      return;
+    }
+    data[2][index] = [];
+    data[2][index][0] = "";
+    data[2][index][1] = username;
+    data[2][index][2] = frequency;
+  });
+  if (!isValid) {
+    return;
+  }
+  const ciphertext = CryptoJS.AES.encrypt(
+    JSON.stringify(data),
+    window.yaoshi || "secret key 123"
+  ).toString();
+  console.log(ciphertext);
+  showLastPage();
+};
 
 $("#generate").click(generateData);
