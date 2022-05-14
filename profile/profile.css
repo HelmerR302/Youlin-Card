@@ -6,7 +6,7 @@ body {
 }
 
 #upper-part{
-    background-image: linear-gradient(to right, #12c2e9, #c471ed, #f64f59);
+    background-image: linear-gradient(to right,#c490e4,#c471ed, #f64f59);
     height: 35%;
 }
 
@@ -15,3 +15,24 @@ body {
     margin-bottom:20px;
     text-align: center; 
 }
+
+i{
+  font-size:120%; 
+ }
+ 
+ .starGroup{
+   display:flex;
+   flex-direction: row-reverse;
+ }
+ 
+ .star{
+   padding:3px;
+ }
+
+ .accountNameText{
+  font-size:120%; 
+ }
+
+ /* .star1{
+   color: #FF8D29;
+ } */

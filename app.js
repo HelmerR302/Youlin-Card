@@ -1,3 +1,5 @@
+window.yaoshi = CryptoJS.enc.Base64.stringify(CryptoJS.enc.Base64.parse(`${window.location.host}-otmr9c`));
+
 function getURL() {
   //generate random sprites and seeds, seeds is a set of 4 random characters
   let spritesList = [
@@ -6,13 +8,12 @@ function getURL() {
     "human",
     "identicon",
     "bottts",
-    "avataars",
     "jdenticon",
     "gridy",
     "micah",
   ];
 
-  let randomSprites = spritesList[Math.floor(Math.random() * 9)];
+  let randomSprites = spritesList[Math.floor(Math.random() * 8)];
 
   function makeSeed() {
     let randomString = "";
@@ -280,7 +281,7 @@ $(".star").click(function (e) {
   $(this).removeClass("selected");
   $(this).addClass("selected");
   $(this).nextAll().addClass("selected");
-  // record which star is clicked, from -2 to 0
+  
   const index = 2 - $(this).index();
   console.log(index);
   $(e.target).parent().attr("data-frequency", index);
@@ -326,7 +327,7 @@ const generateData = () => {
       data[2][index][1] = username;
       data[2][index][2] = frequency
    })
-   console.log(data);
+    ;
    const ciphertext = CryptoJS.AES.encrypt(JSON.stringify(data), window.yaoshi || 'secret key 123').toString();
    console.log(ciphertext);
 }

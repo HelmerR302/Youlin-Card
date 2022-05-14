@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Card - Profile</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="profile.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript"
+ src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/figlet@1.5.2/lib/figlet.min.js"></script>
+  </head>
+<body>
+  <div id="captcha-section">
+    <p>
+        <p><pre id="captcha">hi</pre>请输入验证码 （本验证为降低个人资料被机器直接爬取的可能性）</p>
+        <input id="captchaCheck" />
+        <input type="button" value="验证" onclick="checkCaptcha()" />
+        <input type="button" value="刷新验证码" onclick="loadCaptcha()" />
+    </p>
+  </div>
+  <div id="profile" style="display: none">
+      Hide me
+  </div>
+  <script>
+      function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+      }
+
+      function loadCaptcha() {
+        window.captchaText = getRandomInt(1000, 9999);
+        figlet(window.captchaText, function(err, data) {
+          $('#captcha').html(data)
+        });
+      }      
+
+      function checkCaptcha() {
+        if ($('#captchaCheck').val() == window.captchaText) {
+          $.cookie(`${window.location.host}-yanzheng`, 'verified', { expires: 30, path: '/' });
+          loadProfile()
+        } else {
+          alert('请输入正确的验证码');
+        }
+      }
+
+      function loadProfile() {
+          // TODO: decrypt the data and populate the UI here
+          $('#captcha-section').hide();
+          $('#profile').show();
+      }
+
+      if ($.cookie(`${window.location.host}-yanzheng`) == "verified") {
+        loadProfile();
+      } else {
+        loadCaptcha();
+      }
+
+  </script>
+</body>
+</html>
