@@ -149,13 +149,14 @@ const platformOptions = platforms.map(
 
 $("#datalistOptions").append(platformOptions);
 
-const addRow = (platformArg) => {
-  let row = $("#copyMe").clone(true)[0];
-  row.style.display = "flex";
-  row.id = Math.random().toString().substr(2, 8);
+const addCard = (platformArg) => {
+  let card = $("#copyMe").clone(true)[0];
+  card.style.display = "flex";
+  card.id = Math.random().toString().substr(2, 8);
   const platform = platformArg && platformArg.replace("-", " ")
-  // $(row).find(".platform-name").html(cnDict[platform] || platform)
-  $("#accountRowList").append(row);
+  $(card).find(".platform-name").html(cnDict[platform] || platform)
+  $(card).attr("data-platform", platformArg);
+  $("#accountCardList").append(card);
 };
 
 // Apply callback on options
@@ -163,7 +164,7 @@ const onSearchInput = () => {
   let searchValue = $("#SMDataList")[0].value;
   $("#datalistOptions")[0].childNodes.forEach((option) => {
     if (option.value === searchValue) {
-      addRow(option.value);
+      addCard(option.value);
       // TODO: it should break, but forEach does not support break statement.
     }
   });
@@ -171,28 +172,35 @@ const onSearchInput = () => {
 
 $("#SMDataList")[0].oninput = onSearchInput;
 
-const accountRow = "<p>My Account {accountName}</p>";
-// });
-
 //
+
+getCard = (e) => {
+  return $(e).parents(".account-card").last()
+}
+
 onChangeUsername = (e) => {
-  $(e).parent().attr("data-username", e.value);
+  getCard(e).attr("data-username", e.value);
+};
+
+onChangePlatform = (e) => {
+  const value = $(e).prev('input')[0].value
+  getCard(e).attr("data-platform", value);
+  $(e).parents(".platform-name").last().html(value);
 };
 
 // delete row button
-function deleteRow(btn) {
-  var findRow = btn.parentNode;
-  findRow.remove();
+function deleteCard(btn) {
+  getCard(btn).remove()
 }
 
 //star group
 $(".star").click(function (e) {
   $(this).parent().find(".star").removeClass("selected");
   $(this).addClass("selected");
-  $(this).nextAll().addClass("selected");
+  $(this).prevAll().addClass("selected");
 
-  const index = 2 - $(this).index();
-  $(e.target).parent().attr("data-frequency", index);
+  // const index = 2 - $(this).index();
+  getCard(e.target).attr("data-frequency", $(this).index());
 });
 
 // Next button
@@ -201,7 +209,7 @@ $("#next-button").click(function () {
   $("#accounts-page").show().css({ display: "flex" });
 });
 
-$("#addIcon").click(() => addRow());
+$("#addIcon").click(() => addCard());
 
 // Display the last page
 const showLastPage = () => {

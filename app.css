@@ -40,19 +40,19 @@ i{
 
 .starGroup{
   display:flex;
-  flex-direction: row-reverse;
+  align-items: center;
 }
 
 .star{
   padding:3px;
 }
 
-.starGroup :hover,
+/* .starGroup :hover,
 .starGroup i:hover ~i{
   color: #FF8D29;
   cursor: pointer;
   
-}
+} */
 
 
 .selected{
