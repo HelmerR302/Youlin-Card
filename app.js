@@ -137,10 +137,12 @@ window.platforms = [
   "MeWe",
   "Gab",
   "Rumble",
+  "Nintendo",
 ];
 
 const cnDict = {
   "Kuaishou": "快手",
+  "Nintendo": "任天堂",
 }
 
 const platformOptions = platforms.map(
@@ -188,7 +190,7 @@ onChangePlatform = (e) => {
   $(e).parents(".platform-name").last().html(value);
 };
 
-// delete row button
+// delete card button
 function deleteCard(btn) {
   getCard(btn).remove()
 }
@@ -237,17 +239,18 @@ const generateData = () => {
   // get beardice_path
   data[1] = window.avatarPath;
   data[2] = [];
-  const rows = $(".account-row:not(#copyMe)");
-  rows.each((index, row) => {
-    const username = $(row).find(".username").attr("data-username");
-    const frequency = $(row).find(".frequency").attr("data-frequency");
+  const cards = $(".account-card:not(#copyMe)");
+  cards.each((index, card) => {
+    const platform = $(card).attr("data-platform");
+    const username = $(card).attr("data-username");
+    const frequency = $(card).attr("data-frequency");
     if (!username && !frequency) {
       isValid = false;
       alert("请完整输入");
       return;
     }
     data[2][index] = [];
-    data[2][index][0] = "";
+    data[2][index][0] = window.platforms.indexOf(platform) > -1 ? window.platforms.indexOf(platform) : platform;
     data[2][index][1] = username;
     data[2][index][2] = frequency;
   });
