@@ -4,46 +4,7 @@ window.yaoshi = CryptoJS.enc.Base64.stringify(
 
 window.avatarPath = "identicon/0"
 
-function getURL() {
-  //generate random sprites and seeds, seeds is a set of 4 random characters
-  let spritesList = [
-    "male",
-    "female",
-    "human",
-    "identicon",
-    "bottts",
-    "jdenticon",
-    "gridy",
-    "micah",
-  ];
-
-  let randomSprites = spritesList[Math.floor(Math.random() * 8)];
-
-  function makeSeed() {
-    let randomString = "";
-    let letters = "abcdefghijklmnopqrstuvwxyz";
-    for (let i = 0; i < 4; i++) {
-      randomString += letters.charAt(Math.floor(Math.random() * 26));
-    }
-    return randomString;
-  }
-
-  window.avatarPath = `${randomSprites}/${makeSeed()}`;
-  let randomURL = `https://avatars.dicebear.com/api/${window.avatarPath}.svg`;
-
-  this.src = randomURL;
-}
-
-$("#profileImg").click(getURL);
-
-// $(function () {
-
-const platformOptions = platforms.map(
-  (platform) => `<option value=${platform.replace(" ", "-")}>${cnDict[platform] || platform}</option>`
-);
-
-$("#datalistOptions").append(platformOptions);
-
+/* Event handlers */
 const addCard = (platformArg) => {
   let card = $("#copyMe").clone(true)[0];
   card.style.display = "flex";
@@ -65,10 +26,6 @@ const onSearchInput = () => {
   });
 };
 
-$("#SMDataList")[0].oninput = onSearchInput;
-
-//
-
 getCard = (e) => {
   return $(e).parents(".account-card").last()
 }
@@ -88,32 +45,9 @@ function deleteCard(btn) {
   getCard(btn).remove()
 }
 
-//star group
-$(".star").click(function (e) {
-  $(this).parent().find(".star").removeClass("selected");
-  $(this).addClass("selected");
-  $(this).prevAll().addClass("selected");
-
-  // const index = 2 - $(this).index();
-  getCard(e.target).attr("data-frequency", $(this).index());
-});
-
 const onRandomizeNickname = () => {
   $("#profile-nickname")[0].value = generateName();
 }
-
-onRandomizeNickname();
-$("#random-nickname-button").click(onRandomizeNickname)
-
-// Next button
-$("#next-button").click(function () {
-  window.nickname = $("#profile-nickname")[0].value;
-  $("#avatar-page").hide();
-  $("#accounts-page").show().css({ display: "flex" });
-  $("html").css({height: "auto"})
-});
-
-$("#addIcon").click(() => addCard());
 
 const showQRcode = (ciphertext) => {
 
@@ -125,20 +59,13 @@ const showQRcode = (ciphertext) => {
     image: `assets/logo.svg`,
     dotsOptions: {
         color: "#39395f",
-        // type: "rounded"
     },
-    // backgroundOptions: {
-    //     color: "#e9ebee",
-    // },
     imageOptions: {
         crossOrigin: "anonymous",
         margin: 10
     }
 });
-  //place it on the screen
   qrCode.append(document.getElementById("qr-code"));
-  //download the generate image of the QR code
-  // qrCode.download({ name: "qr", extension: "svg" });
 };
 
 const resetPageHeight = () => {
@@ -201,4 +128,38 @@ const generateData = () => {
   showLastPage(ciphertext);
 };
 
+/* Event listeners*/
+
+$("#profileImg").click(getURL);
+
+const platformOptions = [...platforms].sort().map(
+  (platform) => `<option value=${platform.replace(" ", "-")}>${cnDict[platform] || platform}</option>`
+);
+$("#datalistOptions").append(platformOptions);
+
+$("#SMDataList")[0].oninput = onSearchInput;
+
+//star group
+$(".star").click(function (e) {
+  $(this).parent().find(".star").removeClass("selected");
+  $(this).addClass("selected");
+  $(this).prevAll().addClass("selected");
+
+  getCard(e.target).attr("data-frequency", $(this).index());
+});
+
+$("#random-nickname-button").click(onRandomizeNickname)
+
+// Next button
+$("#next-button").click(function () {
+  window.nickname = $("#profile-nickname")[0].value;
+  $("#avatar-page").hide();
+  $("#accounts-page").show().css({ display: "flex" });
+  $("html").css({height: "auto"})
+});
+
+$("#addIcon").click(() => addCard());
+
 $("#generate").click(generateData);
+
+onRandomizeNickname();

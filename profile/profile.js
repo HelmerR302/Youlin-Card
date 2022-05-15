@@ -3,15 +3,14 @@ window.yaoshi = CryptoJS.enc.Base64.stringify(
 );
 
 const loadProfile = () => {
-  const encryptedData = window.location.search.replace("?data=", "");
-  const bytes = CryptoJS.AES.decrypt(
-    encryptedData,
-    window.yaoshi || "secret key 123"
-  );
-  const data = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
-
+  let data;
   try {
-    console.log(data);
+    const encryptedData = window.location.search.replace("?data=", "");
+    const bytes = CryptoJS.AES.decrypt(
+      encryptedData,
+      window.yaoshi || "secret key 123"
+    );
+    data = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
   } catch (_e) {
     alert("URL错误！");
   }
@@ -35,22 +34,23 @@ const loadProfile = () => {
     accounts: data[2]
   */
 
+  $("#profileName").html(data[0]);
   let avatarString = data[1];
   $("#profileImg").attr(
     "src",
     `https://avatars.dicebear.com/api/${avatarString}.svg`
   );
-  $("#profileName").html(data[0]);
 
   // replace [0] by i? so the next row can be i+1
   // clone a row & pase the data; i=+; i < data[2].length
 
-  console.log(data[2]);
   for (let i = 0; i < data[2].length; i++) {
     let newRow = $("#infoRow").clone(true);
     $(newRow).removeAttr("id");
 
-    $(newRow).find(".platformName").html(`${window.platforms[data[2][i][0]] || data[2][i][0]}`);
+    const platform = window.platforms[data[2][i][0]] || data[2][i][0];
+    const translatedPlatform = cnDict[platform] || platform;
+    $(newRow).find(".platformName").html(`${translatedPlatform}`);
 
     $(newRow).find(".accountNameText").html(`@${data[2][i][1]}`);
 
@@ -70,23 +70,17 @@ const loadProfile = () => {
   $('#profile').show();
 };
 
-function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
-  }
-
-  function loadCaptcha() {
+  loadCaptcha = () => {
     window.captchaText = getRandomInt(1000, 9999);
     figlet(window.captchaText, function(err, data) {
       $('#captcha').html(data)
     });
   }      
 
-  function checkCaptcha() {
+  checkCaptcha = () => {
     if ($('#captchaCheck').val() == window.captchaText) {
       $.cookie(`${window.location.host}-yanzheng`, 'verified', { expires: 30, path: '/' });
-      loadProfile()
+      loadProfile();
     } else {
       alert('请输入正确的验证码');
     }
