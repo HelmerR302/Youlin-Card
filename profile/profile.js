@@ -50,6 +50,8 @@ const loadProfile = () => {
     let newRow = $("#infoRow").clone(true);
     $(newRow).removeAttr("id");
 
+    $(newRow).find(".platformName").html(`${window.platforms[data[2][i][0]] || data[2][i][0]}`);
+
     $(newRow).find(".accountNameText").html(`@${data[2][i][1]}`);
 
     if (data[2][i][2] < 1) {
@@ -60,8 +62,8 @@ const loadProfile = () => {
       $(newRow).find("#starGroup").css("color", "#FF8D29");
     }
 
-    $("#info-part").append(newRow);
-    newRow[0].style.display = "flex";
+    $("#info-body").append(newRow);
+    newRow[0].style.display = "table-row";
   }
 
   $('#captcha-section').hide();

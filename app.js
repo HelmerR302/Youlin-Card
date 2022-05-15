@@ -37,115 +37,6 @@ function getURL() {
 $("#profileImg").click(getURL);
 
 // $(function () {
-window.platforms = [
-  "Facebook",
-  "WhatsApp",
-  "QQ",
-  "WeChat",
-  "QZone",
-  "Tumblr",
-  "Instagram",
-  "Twitter",
-  "Google",
-  "Baidu Tieba",
-  "Skype",
-  "Viber",
-  "Sina Weibo",
-  "LINE",
-  "Snapchat",
-  "YY",
-  "VKontakte ",
-  "Pinterest",
-  "LinkedIn",
-  "Telegram",
-  "Reddit",
-  "Taringa",
-  "Foursquare",
-  "Renren",
-  "Tagged",
-  "Badoo",
-  "Myspace",
-  "Mix",
-  "The Dots",
-  "Kiwibox",
-  "Skyrock",
-  "Delicious",
-  "Snapfish",
-  "ReverbNation",
-  "Flixster",
-  "Care2",
-  "CafeMom",
-  "Ravelry",
-  "Nextdoor",
-  "Wayn",
-  "Cellufun",
-  "YouTube",
-  "Upstream",
-  "Classmates",
-  "MyHeritage",
-  "Viadeo",
-  "Xing",
-  "Xanga",
-  "LiveJournal",
-  "Friendster",
-  "Funny or Die",
-  "Gaia Online",
-  "We Heart It",
-  "Buzznet",
-  "DeviantArt",
-  "Flickr",
-  "MeetMe",
-  "Meetup",
-  "Tout",
-  "Mixi",
-  "Douban",
-  "Vero",
-  "Quora",
-  "Spreely",
-  "Discord",
-  "TikTok",
-  "WT Social",
-  "Triller",
-  "Elpha",
-  "Yubo",
-  "PopBase",
-  "Peanut ",
-  "Valence",
-  "Flip",
-  "HouseParty",
-  "Caffeine",
-  "Steemit",
-  "Goodreads",
-  "Twitch",
-  "CaringBridge",
-  "WattPad",
-  "Crunchyroll",
-  "Soundcloud",
-  "Mocospace",
-  "CouchSurfing",
-  "italki",
-  "Medium",
-  "Ello",
-  "Vimeo",
-  "Giphy",
-  "Tribe",
-  "Kuaishou",
-  "Imgur",
-  "Influenster",
-  "FilmAffinity",
-  "Open Diary",
-  "Bubbly",
-  "Clubhouse",
-  "MeWe",
-  "Gab",
-  "Rumble",
-  "Nintendo",
-];
-
-const cnDict = {
-  "Kuaishou": "快手",
-  "Nintendo": "任天堂",
-}
 
 const platformOptions = platforms.map(
   (platform) => `<option value=${platform.replace(" ", "-")}>${cnDict[platform] || platform}</option>`
@@ -289,10 +180,10 @@ const generateData = () => {
     const platform = $(card).attr("data-platform");
     const username = $(card).attr("data-username");
     const frequency = $(card).attr("data-frequency");
-    if (!username && !frequency) {
+    if (!username || !frequency || !platform) {
       isValid = false;
       alert("请完整输入");
-      return;
+      return false;;
     }
     data[2][index] = [];
     data[2][index][0] = window.platforms.indexOf(platform) > -1 ? window.platforms.indexOf(platform) : platform;

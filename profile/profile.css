@@ -33,6 +33,15 @@ i{
   font-size:120%; 
  }
 
+ .open-sans {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300 !important;
+}
+
+th{
+  font-weight: inherit;
+  border-bottom-color: inherit !important;
+}
  /* .star1{
    color: #FF8D29;
  } */
