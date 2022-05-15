@@ -144,10 +144,15 @@ window.platforms = [
     "Gab",
     "Rumble",
     "Nintendo",
+    "Steam",
+    "Mastondon",
+    "GitHub",
+    "Bitbucket"
   ];
   
 const cnDict = {
   "Kuaishou": "快手",
   "Nintendo": "任天堂",
+  "Mastondon": "长毛象"
 }
 
