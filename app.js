@@ -207,6 +207,7 @@ $(".star").click(function (e) {
 $("#next-button").click(function () {
   $("#avatar-page").hide();
   $("#accounts-page").show().css({ display: "flex" });
+  $("html").css({height: "auto"})
 });
 
 $("#addIcon").click(() => addCard());

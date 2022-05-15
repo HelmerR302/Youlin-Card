@@ -3,6 +3,8 @@ body {
   background: #fff8f0;
   color: #484848;
   height: 100%;
+  -webkit-overflow-scrolling: auto;
+  padding: 30px 0;
 }
 
 .btn {
