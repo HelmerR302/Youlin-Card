@@ -2,6 +2,8 @@ window.yaoshi = CryptoJS.enc.Base64.stringify(
   CryptoJS.enc.Base64.parse(`${window.location.host}-otmr9c`)
 );
 
+window.avatarPath = "identicon/0"
+
 function getURL() {
   //generate random sprites and seeds, seeds is a set of 4 random characters
   let spritesList = [
@@ -205,8 +207,16 @@ $(".star").click(function (e) {
   getCard(e.target).attr("data-frequency", $(this).index());
 });
 
+const onRandomizeNickname = () => {
+  $("#profile-nickname")[0].value = generateName();
+}
+
+onRandomizeNickname();
+$("#random-nickname-button").click(onRandomizeNickname)
+
 // Next button
 $("#next-button").click(function () {
+  window.nickname = $("#profile-nickname")[0].value;
   $("#avatar-page").hide();
   $("#accounts-page").show().css({ display: "flex" });
   $("html").css({height: "auto"})
@@ -214,8 +224,43 @@ $("#next-button").click(function () {
 
 $("#addIcon").click(() => addCard());
 
+const showQRcode = (ciphertext) => {
+
+  const qrCode = new QRCodeStyling({
+    width: 300,
+    height: 300,
+    type: "svg",
+    data: `${window.location.href}profile/?data=${ciphertext}`,
+    image: `assets/logo.svg`,
+    dotsOptions: {
+        color: "#39395f",
+        // type: "rounded"
+    },
+    // backgroundOptions: {
+    //     color: "#e9ebee",
+    // },
+    imageOptions: {
+        crossOrigin: "anonymous",
+        margin: 10
+    }
+});
+  //place it on the screen
+  qrCode.append(document.getElementById("qr-code"));
+  //download the generate image of the QR code
+  // qrCode.download({ name: "qr", extension: "svg" });
+};
+
+const resetPageHeight = () => {
+  $("html").css({height: "100%", padding: 0, background: "white"});
+  $("body").css({padding: 0, background: "white"});
+}
+
 // Display the last page
-const showLastPage = () => {
+const showLastPage = (ciphertext) => {
+  $('#page-3-avatar').attr("src", `https://avatars.dicebear.com/api/${window.avatarPath}.svg`);
+  $('#page-3-nickname').html(window.nickname);
+  showQRcode(ciphertext);
+  resetPageHeight();
   $("#avatar-page").hide();
   $("#accounts-page").hide();
   $("#page-3").show();
@@ -235,7 +280,7 @@ const generateData = () => {
   */
   let isValid = true;
   let data = [];
-  data[0] = ""; // username
+  data[0] = window.nickname || ""; // username
   // get beardice_path
   data[1] = window.avatarPath;
   data[2] = [];
@@ -262,7 +307,7 @@ const generateData = () => {
     window.yaoshi || "secret key 123"
   ).toString();
   console.log(ciphertext);
-  showLastPage();
+  showLastPage(ciphertext);
 };
 
 $("#generate").click(generateData);
