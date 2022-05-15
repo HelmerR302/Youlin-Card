@@ -48,13 +48,14 @@
       </div>
 
 
-      <div id="info-part" style="width:50%; margin-top: 30px; height: 50%; display: flex; flex-direction: column; justify-content: center;">
+      <div id="info-part" style="max-width: 300px; margin-top: 30px; height: 50%; display: flex; flex-direction: column; justify-content: center;">
         <div id="infoRow" style="display:none;
+        gap: 8px;
 justify-content: space-around;
-align-items: baseline;">
-          <i class="bi bi-mastodon"></i>
+align-items: center;">
+          <div class="platformName"><span class="badge bg-secondary">Mastodon</span></div>
 
-          <p class="accountNameText">account name</p>
+          <div><span class="accountNameText badge bg-warning">account name</span></div>
 
           <div id="starGroup">
             <i class="bi bi-star-fill star1"></i>

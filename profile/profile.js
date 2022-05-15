@@ -50,7 +50,7 @@ const loadProfile = () => {
     let newRow = $("#infoRow").clone(true);
     $(newRow).removeAttr("id");
 
-    $(newRow).find(".accountNameText").html(data[2][i][1]);
+    $(newRow).find(".accountNameText").html(`@${data[2][i][1]}`);
 
     if (data[2][i][2] < 1) {
       $(newRow).find(".star1").css("color", "#FF8D29");
